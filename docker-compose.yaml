@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  go-database:
+    image: postgres:11
+    container_name: go-jwt-auth-database
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - go-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: gpjwtauth
+
+volumes:
+  go-db-data:
